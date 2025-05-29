@@ -1,0 +1,7 @@
+rewrite(pow(x, lit64(ival))).to(
+    mul(x, pow(x, lit64(ival - 1))),
+    ival >= 1,
+)
+rewrite(pow(x, lit64(i64(0))), subsume=True).to(
+    Npy_float32(Term.LiteralF64(float(1))),
+)

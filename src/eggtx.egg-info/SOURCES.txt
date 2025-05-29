@@ -8,6 +8,7 @@ src/eggtx.egg-info/PKG-INFO
 src/eggtx.egg-info/SOURCES.txt
 src/eggtx.egg-info/dependency_links.txt
 src/eggtx.egg-info/entry_points.txt
+src/eggtx.egg-info/requires.txt
 src/eggtx.egg-info/top_level.txt
 tests/test_cli.py
 tests/test_rewrite.py
