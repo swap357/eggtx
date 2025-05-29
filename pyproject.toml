@@ -11,8 +11,24 @@ authors = [{ name = "Swapnil Patel" }]
 license = { file = "LICENSE" }
 requires-python = ">=3.8"
 
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "ruff",
+    "black",
+    "pytest",
+]
+
 [project.scripts]
 eggtx = "eggtx.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
