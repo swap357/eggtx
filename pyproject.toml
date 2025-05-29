@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eggtx"
+version = "0.1.0"
+description = "Convert Egglog-style rewrite rules into formal inference rules, output as LaTeX."
+readme = "README.md"
+authors = [{ name = "Swapnil Patel" }]
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+
+[project.scripts]
+eggtx = "eggtx.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
