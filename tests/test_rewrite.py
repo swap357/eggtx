@@ -4,6 +4,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+import pytest
+
 from eggtx.rewrite import parse_rewrite_line, rewrite_to_latex, convert_file_to_latex
 
 
@@ -26,3 +28,19 @@ def test_convert_file_to_latex(tmp_path):
     path.write_text("a => b\nc -> d\n")
     result = convert_file_to_latex(str(path))
     assert result.splitlines() == ["a \\rightarrow b", "c \\rightarrow d"]
+
+
+def test_parse_rewrite_line_invalid_examples():
+    examples = [
+        """rewrite(pow(x, lit64(ival))).to(
+    mul(x, pow(x, lit64(ival - 1))),
+    ival >= 1,
+)""",
+        """rewrite(pow(x, lit64(i64(0))), subsume=True).to(
+    Npy_float32(Term.LiteralF64(float(1))),
+)""",
+    ]
+
+    for ex in examples:
+        with pytest.raises(ValueError):
+            parse_rewrite_line(ex)
